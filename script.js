@@ -5,14 +5,12 @@ let computerScore = 0;
 let playerScore = 0;
 let roundResult;
 
+console.log(playRound(playerSelection, computerSelection))
+
 function computerPlay() {
     let choice = ["rock", "scissors", "paper"];
-
     return choice[Math.floor(Math.random() * choice.length)];
-
 }
-
-console.log(computerPlay())
 
 function noOneWonRocks() {
     alert("No one won, rocks are equal");
@@ -65,70 +63,68 @@ function computerWonScissors() {
     return alert(`Your score: ${playerScore}, computer's score: ${computerScore}`);
 }
 
+for (let i = 0; i < 1000; i++) {
+    playRound(playerSelection, computerSelection);
+    console.log("Your score is: " + playerScore + ". Computer's score is: " + computerScore);
+    declareRoundResult();
+    if (playerScore === 5 || computerScore === 5) {
+        break;
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
 
     playerSelection = prompt('Chose one of those options: "rock", "paper", "scissors": ', '');
     computerSelection = computerPlay();
 
     playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerPlay();
-    
-    if (playerSelection === "rock" & computerSelection === "rock") {
-        roundResult = noOneWonRocks();
-        return roundResult;
-    } else if (playerSelection === "scissors" & computerSelection === "scissors") {
-        roundResult = noOneWonScissors();
-        return roundResult;
-    } else if (playerSelection === "paper" & computerSelection === "paper") {
-        roundResult = noOneWonPaper();
-        return roundResult;
-    } else if (playerSelection === "rock" & computerSelection === "scissors") {
-        roundResult = playerWonRock();
-        console.log(playerScore);
-        return roundResult;
-    } else if (playerSelection === "rock" & computerSelection === "paper") {
-        roundResult = computerWonPaper();
-        console.log(computerScore);
-        return roundResult;
-    } else if (playerSelection === "scissors" & computerSelection === "rock") {
-        roundResult = computerWonRock();
-        console.log(computerScore);
-        return roundResult;
-    } else if (playerSelection === "scissors" & computerSelection === "paper") {
-        roundResult = playerWonScissors();
-        console.log(playerScore);
-        return roundResult;
-    } else if (playerSelection === "paper" & computerSelection === "rock") {
-        roundResult = playerWonPaper();
-        console.log(playerScore);
-        return roundResult;
-    } else if (playerSelection === "paper" & computerSelection === "scissors") {
-        roundResult = computerWonScissors();
-        console.log(computerScore);
-        return roundResult;
-    } else {
-        alert("Oh, you should've insert one of those: rock, scissors, paper.");   
+    computerSelection = computerPlay();    
+    if (playerScore < 5 || computerScore < 5) {
+        if (playerSelection === "rock" & computerSelection === "rock") {
+            roundResult = noOneWonRocks();
+            return roundResult;
+        } else if (playerSelection === "scissors" & computerSelection === "scissors") {
+            roundResult = noOneWonScissors();
+            return roundResult;
+        } else if (playerSelection === "paper" & computerSelection === "paper") {
+            roundResult = noOneWonPaper();
+            return roundResult;
+        } else if (playerSelection === "rock" & computerSelection === "scissors") {
+            roundResult = playerWonRock();
+            console.log(playerScore);
+            return roundResult;
+        } else if (playerSelection === "rock" & computerSelection === "paper") {
+            roundResult = computerWonPaper();
+            console.log(computerScore);
+            return roundResult;
+        } else if (playerSelection === "scissors" & computerSelection === "rock") {
+            roundResult = computerWonRock();
+            console.log(computerScore);
+            return roundResult;
+        } else if (playerSelection === "scissors" & computerSelection === "paper") {
+            roundResult = playerWonScissors();
+            console.log(playerScore);
+            return roundResult;
+        } else if (playerSelection === "paper" & computerSelection === "rock") {
+            roundResult = playerWonPaper();
+            console.log(playerScore);
+            return roundResult;
+        } else if (playerSelection === "paper" & computerSelection === "scissors") {
+            roundResult = computerWonScissors();
+            console.log(computerScore);
+            return roundResult;
+        } else {
+            alert("Oh, you should've insert one of those: rock, scissors, paper.");   
+        }
     }    
 }
 
-for (let i = 0; i < 1000; i++) {
-    let roundResult = playRound(playerSelection, computerSelection);
-    console.log("Your score is: " + playerScore + ". Computer's score is: " + computerScore);
-    if (playerScore === 5 || computerScore === 5) {
-        break;
-    }
-}
-
 function declareRoundResult() {
-    if (computerScore === 5){
+    if (computerScore === 5) {
         alert("Computer won!");
+        console.log("Computer won!");
     } else if (playerScore === 5) {
         alert("You won. congradulations!");
+        console.log("You won. Congradulations!");
     }
 }
-
-console.log(playRound(playerSelection, computerSelection))
-
-declareRoundResult();
-
-console.log(declareRoundResult())
